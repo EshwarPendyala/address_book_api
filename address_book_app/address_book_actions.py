@@ -25,7 +25,7 @@ def delete_contact(db: Session, contact_id: int):
     return {"Message": "Record Deleted!"}
 
 def update_contact(db: Session, contact_id: int, new_name:str, new_mobile: int):
-    contact_to_be_updated = db.query(models.Contact).filter(models.Contact.id == contact_id)
+    contact_to_be_updated = db.query(models.Contact).filter(models.Contact.id == contact_id).first()
     contact_to_be_updated.name = new_name
     contact_to_be_updated.mobile_number = new_mobile
     db.commit()
